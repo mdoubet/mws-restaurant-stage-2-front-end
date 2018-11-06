@@ -141,9 +141,9 @@ createRestaurantHTML = (restaurant) => {
   console.log(rImS);
   const picture = document.createElement("picture");
   const source = document.createElement('source');
-  source.sizes ="(min-width: 640px) 60vw, 100vw";
+  source.sizes ="(min-width: 320px) 60vw, 100vw";
   source.srcset = `${rImS.smallWEBP} 320w,
-                    ${rImS.mediumJPG} 540w,
+                    ${rImS.mediumWEBP} 540w,
                     ${rImS.largeWEBP} 800w`;
   source.type = "image/webp";
   console.log(source);
