@@ -149,8 +149,11 @@ createRestaurantHTML = (restaurant) => {
   console.log(source);
 
   const image = document.createElement('img');
-  image.className = 'restaurant-img';
-  image.src = rImS.largeJPG;
+  image.className = 'restaurant-small-img';
+  image.src = rImS.mediumJPG;
+  image.srcset = `${rImS.smallJPG} 320w,
+                    ${rImS.mediumJPG} 540w,
+                    ${rImS.largeJPG} 800w`;
 
   picture.appendChild(source);
   picture.appendChild(image);
