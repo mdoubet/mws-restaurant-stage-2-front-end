@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=devicewidth, initial-scale=1">
+  <meta name="viewport" content="width=deviceWidth, initial-scale=1">
   <!-- Normalize.css for better cross-browser consistency -->
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <!-- Main CSS file -->
@@ -36,20 +36,25 @@
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container">
-      <h1 id="restaurant-name"></h1>
-      <picture id="restaurant-img">
-        <source id="webp-source"/>
-        <img id="jpg-source"/>
-      </picture>
-      <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
-      <table id="restaurant-hours"></table>
+      <section id="restaurant-img-container">
+        <h1 id="restaurant-name"></h1>
+        <picture id="restaurant-img">
+          <source id="webp-source"/>
+          <img id="jpg-source"/>
+        </picture>
+      </section>
+      <article id="restaurant-info">
+        <p id="restaurant-cuisine"></p>
+        <p id="restaurant-address"></p>
+        <table id="restaurant-hours"></table>
+      </article>
+      <section id="reviews-container">
+      <ul id="reviews-list"></ul>
+    </section>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
-    <section id="reviews-container">
-      <ul id="reviews-list"></ul>
-    </section>
+
     <!-- End reviews -->
   </main>
   <!-- End main -->

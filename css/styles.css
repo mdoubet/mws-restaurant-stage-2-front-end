@@ -3,7 +3,7 @@
 img, embed, object, video {max-width:100%;}
 body,td,th,p{
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
+	font-size: 12pt;
 	color: #333;
 	line-height: 1.5;
 }
@@ -82,6 +82,10 @@ nav h1 a {
     width: calc(50% - 80px);
 }
 
+.inside #breadcrumb {
+  width: calc(100% - 80px);
+}
+
 /* Display list items side by side */
 #breadcrumb li {
     display: inline;
@@ -116,7 +120,7 @@ nav h1 a {
 }
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
- 
+
   min-height: 50px;
   background-color: #3397DB;
   align-items: center;
@@ -196,7 +200,32 @@ nav h1 a {
   text-transform: uppercase;
 }
 
+/* ====================== media queries =========================*/
+
+@media screen and (min-width: 450px) {
+
+  #restaurants-list li {
+    width: 40%;
+    margin: 15px auto;
+  }
+}
+
+@media screen and (min-width: 900px) {
+
+  #restaurants-list li {
+    width: 30%;
+    margin: 15px auto;
+  }
+}
+
+
+
 /* ====================== Restaurant Details ====================== */
+
+.inside #maincontent {
+  display: flex;
+  flex-wrap wrap;
+}
 .inside header {
   position: fixed;
   top: 0;
@@ -209,7 +238,7 @@ nav h1 a {
   position: fixed;
   right: 0;
   top: 80px;
-  width: 50%;
+  width: calc(50% - 80px);
 }
 .inside #map {
   background-color: #ccc;
@@ -218,8 +247,8 @@ nav h1 a {
 }
 .inside #footer {
   bottom: 0;
-  position: absolute;
-  width: 50%;
+  position: relative;
+  width: 100%;
 }
 #restaurant-name {
   color: #f18200;
@@ -235,9 +264,7 @@ nav h1 a {
 	width: 90%;
 }
 
-#restaurant-small-img {
-  width: 100%;
-}
+
 #restaurant-address {
   font-size: 12pt;
   margin: 10px 0px;
@@ -254,13 +281,14 @@ nav h1 a {
   text-transform: uppercase;
 	width: 90%;
 }
-#restaurant-container, #reviews-container {
+#restaurant-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   padding: 140px 40px 30px;
   width: 50%;
 }
 #reviews-container {
+  width: 100%;
   padding: 30px 40px 80px;
 }
 #reviews-container h2 {
@@ -292,19 +320,48 @@ nav h1 a {
   color: #666;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (max-width: 1024px){
+  .inside #maincontent{
+    display:flex;
+    flex-direction: column;
+  }
 
-  #restaurants-list li {
-    width: 40%;
-    margin: 15px auto;
+  .inside #restaurant-container{
+    width:calc(100% - 80px);
+    padding: 80px auto 10px;
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+  .inside #restaurant-info {
+    width: 100%;
+  }
+
+  .inside #map-container{
+    width:100vw;
+    height: 300px;
+    position: relative;
+    right: auto;
+  }
+  #reviews-container{
+    padding: 30px 0 80px;
   }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 650px) and (max-width: 1024px){
+  .inside #restaurant-img-container{
+    width:calc(60% );
+  }
+  .inside #restaurant-info {
+    padding: 80px 0 0 10px;
+    width: calc(40% - 10px);
+  }
 
-  #restaurants-list li {
-    width: 30%;
-    margin: 15px auto;
+}
+
+@media screen and (min-width: 850px){
+  #restaurant-hours {
+    font-size: 30pt;
   }
 }
 
