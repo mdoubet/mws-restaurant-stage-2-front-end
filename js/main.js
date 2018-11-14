@@ -5,6 +5,16 @@ var map
 var markers = []
 
 /**
+ * register service worker
+ **/
+if ('serviceWorker' in navigator) {
+    addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js');
+    });
+}
+
+
+/**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -146,7 +156,7 @@ createRestaurantHTML = (restaurant) => {
                     ${rImS.mediumWEBP} 540w,
                     ${rImS.largeWEBP} 800w`;
   source.type = "image/webp";
-  console.log(source);
+  //console.log(source);
 
   const image = document.createElement('img');
   image.className = 'restaurant-small-img';
