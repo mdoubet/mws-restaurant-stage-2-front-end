@@ -9,7 +9,7 @@ var markers = []
  **/
 if ('serviceWorker' in navigator) {
     addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js');
+      navigator.serviceWorker.register('/sw.js');
     });
 }
 
@@ -17,7 +17,7 @@ if ('serviceWorker' in navigator) {
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', event => {
   fetchNeighborhoods();
   fetchCuisines();
 });
@@ -91,13 +91,13 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
-
+    /**
+     * when tiles are loaded, set tabIndex to a high number so tabbing skips over the map to the neighborhood filter
+     */
     google.maps.event.addListener(self.map, "tilesloaded", function(){
-        /* * / //Jquery
-        $("#map a").attr("tabindex","-1");
-        /*/ //No Jquery
+
         [].slice.apply(document.querySelectorAll('#map a')).forEach(function(item) {
-            item.setAttribute('tabindex', '999');
+            item.setAttribute('tabIndex', '999');
         });
         console.log("tiles loaded. map tabIndex changed?")
     });
@@ -158,16 +158,22 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
+    /**
+     * create code for responsive images and append them to the li element
+     */
   const rImS = DBHelper.imageUrlForRestaurant(restaurant); // rImS = restaurant Image Source
   const picture = document.createElement("picture");
+
+   // use a source element and give the browser 3 webp source options if webp is supported
   const source = document.createElement('source');
   source.sizes ="(min-width: 320px) 60vw, 100vw";
   source.srcset = `${rImS.smallWEBP} 320w,
                     ${rImS.mediumWEBP} 540w,
                     ${rImS.largeWEBP} 800w`;
   source.type = "image/webp";
-  //console.log(source);
 
+  // use an image element for the default jpg option if webp is not supported
+    // with srcset giving the browser 3 options of file size to choose from based on screen size
   const image = document.createElement('img');
   image.className = 'restaurant-small-img';
   image.src = rImS.mediumJPG;
@@ -177,6 +183,10 @@ createRestaurantHTML = (restaurant) => {
 
   picture.appendChild(source);
   picture.appendChild(image);
+  /*
+  * use the name of the restaurant and cuisine type for the image alt text
+   */
+  image.alt = restaurant.name + " " + restaurant.cuisine_type + " restaurant";
   li.append(picture);
 
   const name = document.createElement('h1');

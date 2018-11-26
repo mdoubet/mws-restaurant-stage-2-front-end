@@ -150,7 +150,9 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-
+      //use the restaurant.photograph property from restaurants.json to generate
+      // image locations for responsive site using prefixes of 'small-' and 'medium-' to
+      // designate small and medium versions of both jpg and webp images.
       const largeJPG = `${restaurant.photograph}`;
       const largeWebp = `${restaurant.photograph.substring(0,(restaurant.photograph.length - 4))}.webp`;
       const restaurantImages = {

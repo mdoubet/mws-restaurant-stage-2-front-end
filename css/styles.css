@@ -200,7 +200,7 @@ nav h1 a {
   text-transform: uppercase;
 }
 
-/* ====================== media queries =========================*/
+/* ====================== media queries for index.html  =========================*/
 
 @media screen and (min-width: 450px) {
 
@@ -320,6 +320,7 @@ nav h1 a {
   color: #666;
 }
 
+/*============================== media queries for restaurant.html =======================================*/
 @media screen and (max-width: 1024px){
   .inside #maincontent{
     display:flex;
