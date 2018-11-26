@@ -44,17 +44,13 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-    // var requestUrl = new URL(event.request.url);
-    //
-    // if (requestUrl.origin === location.origin) {
-    //     if (requestUrl.pathname === '/') {
-    //         event.respondWith(caches.match('/skeleton'));
-    //         return;
-    //     }
-    // }
+
 
 
 // if the request url is from google maps, add it to the map cache. Otherwise, look for it in the static cache or the network.
+    //  to cache files from the map api, I used two resources to develop my code:
+    // 1) https://developer.mozilla.org/en-US/docs/Web/API/Cache
+    // 2) https://stackoverflow.com/questions/27915193/how-to-cache-apis-like-google-maps-while-using-service-workers
       if (event.request.url.startsWith('https://maps.googleapis.com/maps/api/js')){
         event.respondWith(
           caches.open(mapCacheName).then( cache => {
@@ -65,10 +61,10 @@ self.addEventListener('fetch', function(event) {
               }
              console.log("fetching from network and putting in cache") ;
              fetch (event.request).then(networkResponse => {
-                cache.put(event.request, networkResponse.clone());
-                console.log('just put something in the cache', networkResponse);
+                cache.put(event.request, networkResponse.clone()).then( () => console.log('just put something in the cache', networkResponse));
+
                 return networkResponse;
-              })
+              }).catch( () => console.log("something went wrong"))
             })
           })
         );
@@ -96,9 +92,3 @@ self.addEventListener('message', function(event) {
 });
 
 
-// console.log("Service Worker Working")
-// addEventListener('fetch', event => {
-//     event.respondWith(
-//         new Response('service worker fetch <b> :P </b>')
-//     );
-// });
