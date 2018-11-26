@@ -41,6 +41,7 @@ fetchNeighborhoods = () => {
  */
 fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
   const select = document.getElementById('neighborhoods-select');
+select.tabIndex = 3;
   neighborhoods.forEach(neighborhood => {
     const option = document.createElement('option');
     option.innerHTML = neighborhood;
@@ -68,7 +69,7 @@ fetchCuisines = () => {
  */
 fillCuisinesHTML = (cuisines = self.cuisines) => {
   const select = document.getElementById('cuisines-select');
-
+select.tabIndex = 4;
   cuisines.forEach(cuisine => {
     const option = document.createElement('option');
     option.innerHTML = cuisine;
@@ -90,6 +91,16 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
+
+    google.maps.event.addListener(self.map, "tilesloaded", function(){
+        /* * / //Jquery
+        $("#map a").attr("tabindex","-1");
+        /*/ //No Jquery
+        [].slice.apply(document.querySelectorAll('#map a')).forEach(function(item) {
+            item.setAttribute('tabindex', '999');
+        });
+        console.log("tiles loaded. map tabIndex changed?")
+    });
   updateRestaurants();
 }
 
@@ -183,7 +194,9 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more)
+  more.tabIndex = 5;
+  more.setAttribute('aria-label', restaurant.name + " more information");
+  li.append(more);
 
   return li
 }

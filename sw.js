@@ -58,11 +58,16 @@ self.addEventListener('fetch', function(event) {
       if (event.request.url.startsWith('https://maps.googleapis.com/maps/api/js')){
         event.respondWith(
           caches.open(mapCacheName).then( cache => {
-          return cache.match(event.request).then((response) => {
-            return response || fetch (event.request).then((response) => {
-                cache.put(event.request.url, response.clone());
-                console.log('just put something in the cache', response);
-                return response;
+            return cache.match(event.request).then(response => {
+              if (response) {
+                  console.log("found a response in the cache ", response.url);
+                  return response;
+              }
+             console.log("fetching from network and putting in cache") ;
+             fetch (event.request).then(networkResponse => {
+                cache.put(event.request, networkResponse.clone());
+                console.log('just put something in the cache', networkResponse);
+                return networkResponse;
               })
             })
           })

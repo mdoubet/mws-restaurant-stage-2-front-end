@@ -67,6 +67,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
                     ${rImS.mediumJPG} 540w,
                     ${rImS.largeJPG} 800w`;
     jpgSource.type = "image/jpg";
+
   const webpSource = document.getElementById('webp-source');
     webpSource.sizes ="(min-width: 800px) 60vw, 100vw";
     webpSource.srcset = `${rImS.smallWEBP} 320w,
