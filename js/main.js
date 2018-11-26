@@ -148,7 +148,6 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
   const rImS = DBHelper.imageUrlForRestaurant(restaurant); // rImS = restaurant Image Source
-  console.log(rImS);
   const picture = document.createElement("picture");
   const source = document.createElement('source');
   source.sizes ="(min-width: 320px) 60vw, 100vw";

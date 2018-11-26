@@ -60,6 +60,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const picture = document.getElementById('restaurant-img');
   picture.className = 'restaurant-img';
 
+
   const jpgSource = document.getElementById('jpg-source');
     jpgSource.sizes ="(min-width: 800px) 60vw, 100vw";
     jpgSource.srcset = `${rImS.smallJPG} 320w,
