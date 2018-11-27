@@ -55,6 +55,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
 
+    //get responsive image urls from DBHelper
   const rImS= DBHelper.imageUrlForRestaurant(restaurant); // rImS = restaurant Image Source
 
   const picture = document.getElementById('restaurant-img');
@@ -74,7 +75,12 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
                     ${rImS.mediumWEBP} 540w,
                     ${rImS.largeWEBP} 800w`;
     webpSource.type = "image/webp";
-  //get responsive image urls from DBHelper
+
+    /*
+    * use the name of the restaurant and cuisine type for the image alt text
+    */
+    jpgSource.alt = restaurant.name + " " + restaurant.cuisine_type + " restaurant";
+
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -112,7 +118,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 

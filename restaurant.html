@@ -19,9 +19,11 @@
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
-      <li><a href="/">Home</a></li>
-    </ul>
+    <nav aria-label="Breadcrumb" role="navigation">
+      <ul id="breadcrumb">
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
     <!-- End breadcrumb -->
     <!-- End nav -->
   </header>
@@ -31,13 +33,13 @@
   <main id="maincontent">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map"></div>
+      <div id="map" aria-label="location" role="application"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container">
       <section id="restaurant-img-container">
-        <h1 id="restaurant-name"></h1>
+        <h2 id="restaurant-name"></h2>
         <picture id="restaurant-img" aria-labelledby="restaurant-name">
           <source id="webp-source"/>
           <img id="jpg-source"/>
