@@ -1,8 +1,8 @@
 let restaurants,
   neighborhoods,
-  cuisines
-var map
-var markers = []
+  cuisines;
+var map;
+var markers = [];
 
 /**
  * register service worker
@@ -91,16 +91,15 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
-    /**
-     * when tiles are loaded, set tabIndex to a high number so tabbing skips over the map to the neighborhood filter
-     */
-    google.maps.event.addListener(self.map, "tilesloaded", function(){
+  /**
+   * when tiles are loaded, set tabIndex to a high number so tabbing skips over the map to the neighborhood filter
+   */
+  google.maps.event.addListener(self.map, "tilesloaded", function(){
 
-        [].slice.apply(document.querySelectorAll('#map a')).forEach(function(item) {
-            item.setAttribute('tabIndex', '999');
-        });
-        console.log("tiles loaded. map tabIndex changed?")
+    [].slice.apply(document.querySelectorAll('#map a')).forEach(function(item) {
+        item.setAttribute('tabIndex', '999');
     });
+  });
   updateRestaurants();
 }
 
@@ -158,9 +157,10 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
-    /**
-     * create code for responsive images and append them to the li element
-     */
+
+  /**
+   * create code for responsive images and append them to the li element
+   */
   const rImS = DBHelper.imageUrlForRestaurant(restaurant); // rImS = restaurant Image Source
   const picture = document.createElement("picture");
 
@@ -208,7 +208,7 @@ createRestaurantHTML = (restaurant) => {
   more.setAttribute('aria-label', restaurant.name + " more information");
   li.append(more);
 
-  return li
+  return li;
 }
 
 /**
