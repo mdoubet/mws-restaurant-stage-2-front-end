@@ -61,25 +61,30 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const picture = document.getElementById('restaurant-img');
   picture.className = 'restaurant-img';
 
-
-  const jpgSource = document.getElementById('jpg-source');
-    jpgSource.sizes ="(min-width: 800px) 60vw, 100vw";
-    jpgSource.srcset = `${rImS.smallJPG} 320w,
+  if (restaurant.photograph) {
+      const jpgSource = document.getElementById('jpg-source');
+      jpgSource.sizes = "(min-width: 800px) 60vw, 100vw";
+      jpgSource.srcset = `${rImS.smallJPG} 320w,
                     ${rImS.mediumJPG} 540w,
                     ${rImS.largeJPG} 800w`;
-    jpgSource.type = "image/jpg";
+      jpgSource.type = "image/jpg";
 
-  const webpSource = document.getElementById('webp-source');
-    webpSource.sizes ="(min-width: 800px) 60vw, 100vw";
-    webpSource.srcset = `${rImS.smallWEBP} 320w,
+      const webpSource = document.getElementById('webp-source');
+      webpSource.sizes = "(min-width: 800px) 60vw, 100vw";
+      webpSource.srcset = `${rImS.smallWEBP} 320w,
                     ${rImS.mediumWEBP} 540w,
                     ${rImS.largeWEBP} 800w`;
-    webpSource.type = "image/webp";
+      webpSource.type = "image/webp";
+
+  }
+    const defaultImage = document.getElementById('default-restaurant-img');
+      defaultImage.src = "img/restaurant-default.svg";
+      defaultImage.type = "image/svg";
 
     /*
     * use the name of the restaurant and cuisine type for the image alt text
     */
-    jpgSource.alt = restaurant.name + " " + restaurant.cuisine_type + " restaurant";
+    defaultImage.alt = restaurant.name + " " + restaurant.cuisine_type + " restaurant";
 
 
   const cuisine = document.getElementById('restaurant-cuisine');

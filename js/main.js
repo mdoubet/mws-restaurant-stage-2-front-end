@@ -164,29 +164,39 @@ createRestaurantHTML = (restaurant) => {
   const rImS = DBHelper.imageUrlForRestaurant(restaurant); // rImS = restaurant Image Source
   const picture = document.createElement("picture");
 
-   // use a source element and give the browser 3 webp source options if webp is supported
-  const source = document.createElement('source');
-  source.sizes ="(min-width: 320px) 60vw, 100vw";
-  source.srcset = `${rImS.smallWEBP} 320w,
+  if (restaurant.photograph) {
+      // use a source element and give the browser 3 webp source options if webp is supported
+      const webpSource = document.createElement('source');
+      webpSource.sizes = "(min-width: 320px) 60vw, 100vw";
+      webpSource.srcset = `${rImS.smallWEBP} 320w,
                     ${rImS.mediumWEBP} 540w,
                     ${rImS.largeWEBP} 800w`;
-  source.type = "image/webp";
+      webpSource.type = "image/webp";
 
-  // use an image element for the default jpg option if webp is not supported
-    // with srcset giving the browser 3 options of file size to choose from based on screen size
-  const image = document.createElement('img');
-  image.className = 'restaurant-small-img';
-  image.src = rImS.mediumJPG;
-  image.srcset = `${rImS.smallJPG} 320w,
+      // use an image element for the default jpg option if webp is not supported
+      // with srcset giving the browser 3 options of file size to choose from based on screen size
+      const jpgSource = document.createElement('source');
+      jpgSource.srcset = `${rImS.smallJPG} 320w,
                     ${rImS.mediumJPG} 540w,
                     ${rImS.largeJPG} 800w`;
+      jpgSource.type = "image/jpg"
+      picture.appendChild(webpSource);
+      picture.appendChild(jpgSource);
 
-  picture.appendChild(source);
-  picture.appendChild(image);
+  }
+
+  const defaultImage = document.createElement('img');
+  defaultImage.className = 'restaurant-small-img';
+  defaultImage.src = 'img/restaurant-default.svg';
+  defaultImage.type = 'image/svg';
+
+
+  picture.appendChild(defaultImage);
+
   /*
   * use the name of the restaurant and cuisine type for the image alt text
    */
-  image.alt = restaurant.name + " " + restaurant.cuisine_type + " restaurant";
+  defaultImage.alt = restaurant.name + " " + restaurant.cuisine_type + " restaurant";
   li.append(picture);
 
   const name = document.createElement('h1');
