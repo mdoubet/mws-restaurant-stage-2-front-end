@@ -1,0 +1,44 @@
+{
+  "name": "mws-restaurant-stage-2-frontend",
+  "version": "1.0.0",
+  "description": "Restaurant reviews project for Udacity Mobile Web Specialist Nanodegree",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "idb": "^2.1.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "ansi-colors": "^3.1.0",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.0",
+    "browserify": "^16.2.3",
+    "del": "^3.0.0",
+    "fancy-log": "^1.3.2",
+    "gulp": "^3.9.1",
+    "gulp-newer": "^1.4.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "lodash": "^4.17.11",
+    "merge-stream": "^1.0.1",
+    "run-sequence": "^2.2.1",
+    "sharp": "^0.20.5",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "watchify": "^3.11.0"
+
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdoubet/mws-restaurant-stage-2-front-end.git"
+  },
+  "author": "Matt Doubet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdoubet/mws-restaurant-stage-2-front-end/issues"
+  },
+  "homepage": "https://github.com/mdoubet/mws-restaurant-stage-2-front-end#readme"
+}
