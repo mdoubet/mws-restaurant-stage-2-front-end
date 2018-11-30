@@ -57,7 +57,7 @@ gulp.task('copy', function() {
 gulp.task('build', function(done) {
     return runSequence(
         'clean',
-        ['responsive:images', 'js:bundle'],
+        ['js:bundle'],
         'copy', // copy is done last, so is easy to see what's been copied.
         done
     )
@@ -71,7 +71,7 @@ gulp.task('sync', ['build'], function() {
             baseDir: './dist'
         }
     });
-
+np
     gulp.watch(copy.src, ['copy']).on('change', browserSync.reload);
 
     // each bundle on 'update' will call browserSync.stream() at the end of the pipe
