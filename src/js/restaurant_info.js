@@ -26,6 +26,18 @@ window.initMap = () => {
       });
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
+        self.map.addListener('tilesloaded', function() {
+            const buttons = document.querySelectorAll('#gm-control-active');
+            buttons.forEach(button => {
+                button.childNodes.forEach(buttonChild => {
+                    console.log(buttonChild);
+                    if(buttonChild.element.nodeName.toLowerCase() === 'img') buttonChild.alt = "Google Maps Image";
+                });
+            });
+            // images.forEach(function(image) {
+            //     image.alt = "Google Maps Image";
+            // });
+        });
     }
   });
 }
@@ -199,6 +211,11 @@ const getParameterByName = (name, url) => {
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+// when google map has loaded, add an alt tag to the images
+// this solution was suggested in a stack overflow forum:
+// https://stackoverflow.com/questions/20714153/google-map-tiles-missing-alt-tag-causing-lower-accessibility-score
+
 
 /**
  *
