@@ -1,5 +1,6 @@
 import dbPromise from './indexController'
 
+
 /**
  * Common database helper functions.
  */

@@ -1,26 +1,18 @@
-const staticCacheName = 'mws-restaurant-pt2-v1';
-const mapCacheName = 'mws-restaurant-map-v1';
+const staticCacheName = 'mws-restaurant-pt2-v2';
+const mapCacheName = 'mws-restaurant-map';
+const imageCacheName = 'mws-restaurant-images';
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
             return cache.addAll([
                 '/',
+                'index.html',
                 'js/main.js',
                 'js/restaurant_info.js',
-                'js/dbhelper.js',
                 'css/styles.css',
-                'img/1.webp', 'img/1.jpg', 'img/medium-1.jpg', 'img/medium-1.webp', 'img/small-1.jpg', 'img/small-1.webp',
-                 'img/2.webp', 'img/2.jpg', 'img/medium-2.jpg', 'img/medium-2.webp', 'img/small-2.jpg', 'img/small-2.webp',
-                'img/3.webp', 'img/3.jpg', 'img/medium-3.jpg', 'img/medium-3.webp', 'img/small-3.jpg', 'img/small-3.webp',
-                'img/4.webp', 'img/4.jpg', 'img/medium-4.jpg', 'img/medium-4.webp', 'img/small-4.jpg', 'img/small-4.webp',
-                'img/5.webp', 'img/5.jpg', 'img/medium-5.jpg', 'img/medium-5.webp', 'img/small-5.jpg', 'img/small-5.webp',
-                'img/6.webp', 'img/6.jpg', 'img/medium-6.jpg', 'img/medium-6.webp', 'img/small-6.jpg', 'img/small-6.webp',
-                'img/7.webp', 'img/7.jpg', 'img/medium-7.jpg', 'img/medium-7.webp', 'img/small-7.jpg', 'img/small-7.webp',
-                'img/8.webp', 'img/8.jpg', 'img/medium-8.jpg', 'img/medium-8.webp', 'img/small-8.jpg', 'img/small-8.webp',
-                'img/9.webp', 'img/9.jpg', 'img/medium-9.jpg', 'img/medium-9.webp', 'img/small-9.jpg', 'img/small-9.webp',
-                'img/10.webp', 'img/10.jpg', 'img/medium-10.jpg', 'img/medium-10.webp', 'img/small-10.jpg', 'img/small-10.webp',
-                'restaurant.html'
+                'restaurant.html',
+                'img/restaurant-default.svg'
 
             ]);
         })
@@ -32,7 +24,7 @@ self.addEventListener('activate', function(event) {
         caches.keys().then(function(cacheNames) {
             return Promise.all(
                 cacheNames.filter(function(cacheName) {
-                    return cacheName.startsWith('mws-restaurant-pt1') &&
+                    return cacheName.startsWith('mws-restaurant-pt2') &&
                         cacheName != staticCacheName;
                 }).map(function(cacheName) {
                     return caches.delete(cacheName);
@@ -50,12 +42,12 @@ self.addEventListener('fetch', function(event) {
     //  to cache files from the map api, I used two resources to develop my code:
     // 1) https://developer.mozilla.org/en-US/docs/Web/API/Cache
     // 2) https://stackoverflow.com/questions/27915193/how-to-cache-apis-like-google-maps-while-using-service-workers
-      if (event.request.url.startsWith('https://maps.googleapis.com/maps/api/js')){
+      if (event.request.url.match('https://maps.googleapis.com/maps/api/js/') && !event.request.url.startsWith('https://maps.googleapis.com/maps/api/js/QuotaService')){
         event.respondWith(
           caches.open(mapCacheName).then( cache => {
             return cache.match(event.request).then(response => {
               if (response) {
-                  console.log("found a response in the cache ", response.url);
+                  console.log("found a response in the cache ", response);
                   return response;
               }
              console.log("fetching from network and putting in cache") ;
@@ -68,14 +60,35 @@ self.addEventListener('fetch', function(event) {
           })
         );
       }
+      else {
+          if (event.request.url.startsWith('http://localhost:8000/img/')) {
+              event.respondWith(
+                  caches.open(imageCacheName).then(cache => {
+                      return cache.match(event.request).then(response => {
+                          if (response) {
+                              console.log("found the image in the cache");
+                              return response;
+                              return;
+                          }
+                          console.log("fetching from network and putting in cache");
+                          fetch(event.request).then(networkResponse => {
+                              cache.put(event.request, networkResponse.clone());
+                              return networkResponse;
+                          }).catch(() => console.log("something went wrong with image cache"));
+                      });
+                  })
+              )
+          }
+      }
 
-    else {
+
           event.respondWith(
               caches.match(event.request).then(response => {
                   return response || fetch(event.request);
               })
           );
-      }
+
+
 });
 
 

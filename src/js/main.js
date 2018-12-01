@@ -1,19 +1,28 @@
 import DBHelper from './dbhelper.js';
 
+import lazysizes from 'lazysizes'
+
+console.log(lazysizes);
+
+
+/**
+ * register service worker
+ **/
+if ('serviceWorker' in navigator) {
+    addEventListener('load', function() {
+        navigator.serviceWorker.register('../sw.js');
+    });
+}
+
+
+
 let restaurants,
   neighborhoods,
   cuisines;
 var map;
 var markers = [];
 
-/**
- * register service worker
- **/
-// if ('serviceWorker' in navigator) {
-//     addEventListener('load', function() {
-//       navigator.serviceWorker.register('/sw.js');
-//     });
-// }
+
 
 
 /**
@@ -170,18 +179,18 @@ const createRestaurantHTML = (restaurant) => {
   if (restaurant.photograph) {
       // use a source element and give the browser 3 webp source options if webp is supported
       const webpSource = document.createElement('source');
-      webpSource.sizes = "(min-width: 320px) 60vw, 100vw";
-      webpSource.srcset = `${rImS.smallWEBP} 320w,
+      webpSource.setAttribute('data-sizes', "(min-width: 450px) 35vw, (min-width: 900px) 27vw, 90vw");
+      webpSource.setAttribute('data-srcset',`${rImS.smallWEBP} 320w,
                     ${rImS.mediumWEBP} 540w,
-                    ${rImS.largeWEBP} 800w`;
+                    ${rImS.largeWEBP} 800w`);
       webpSource.type = "image/webp";
 
       // use an image element for the default jpg option if webp is not supported
       // with srcset giving the browser 3 options of file size to choose from based on screen size
       const jpgSource = document.createElement('source');
-      jpgSource.srcset = `${rImS.smallJPG} 320w,
+      jpgSource.setAttribute('data-srcset', `${rImS.smallJPG} 320w,
                     ${rImS.mediumJPG} 540w,
-                    ${rImS.largeJPG} 800w`;
+                    ${rImS.largeJPG} 800w`);
       jpgSource.type = "image/jpg"
       picture.appendChild(webpSource);
       picture.appendChild(jpgSource);
@@ -189,8 +198,8 @@ const createRestaurantHTML = (restaurant) => {
   }
 
   const defaultImage = document.createElement('img');
-  defaultImage.className = 'restaurant-small-img';
-  defaultImage.src = 'img/restaurant-default.svg';
+  defaultImage.className = 'restaurant-small-img lazyload';
+  defaultImage.setAttribute('data-src', 'img/restaurant-default.svg');
   defaultImage.type = 'image/svg';
 
 
