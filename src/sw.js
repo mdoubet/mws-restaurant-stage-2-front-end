@@ -1,4 +1,4 @@
-const staticCacheName = 'mws-restaurant-pt1-v1';
+const staticCacheName = 'mws-restaurant-pt2-v1';
 const mapCacheName = 'mws-restaurant-map-v1';
 
 self.addEventListener('install', function(event) {
@@ -20,7 +20,6 @@ self.addEventListener('install', function(event) {
                 'img/8.webp', 'img/8.jpg', 'img/medium-8.jpg', 'img/medium-8.webp', 'img/small-8.jpg', 'img/small-8.webp',
                 'img/9.webp', 'img/9.jpg', 'img/medium-9.jpg', 'img/medium-9.webp', 'img/small-9.jpg', 'img/small-9.webp',
                 'img/10.webp', 'img/10.jpg', 'img/medium-10.jpg', 'img/medium-10.webp', 'img/small-10.jpg', 'img/small-10.webp',
-                'data/restaurants.json',
                 'restaurant.html'
 
             ]);
@@ -61,10 +60,10 @@ self.addEventListener('fetch', function(event) {
               }
              console.log("fetching from network and putting in cache") ;
              fetch (event.request).then(networkResponse => {
-                cache.put(event.request, networkResponse.clone()).then( () => console.log('just put something in the cache', networkResponse));
+                cache.put(event.request, networkResponse.clone());
 
                 return networkResponse;
-              }).catch( () => console.log("something went wrong"))
+              }).catch( () => console.log("something went wrong with map cache"))
             })
           })
         );
@@ -73,7 +72,6 @@ self.addEventListener('fetch', function(event) {
     else {
           event.respondWith(
               caches.match(event.request).then(response => {
-                  console.log(response);
                   return response || fetch(event.request);
               })
           );

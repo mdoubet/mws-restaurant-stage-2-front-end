@@ -1,8 +1,10 @@
+import dbPromise from './indexController'
 
 /**
  * Common database helper functions.
  */
-class DBHelper {
+export default class DBHelper {
+
 
   /**
    * Database URL.
@@ -23,11 +25,21 @@ class DBHelper {
 
       if (xhr.status === 200) { // Got a success response from server!
         const restaurants = JSON.parse(xhr.responseText);
+        //call update call updateRestaurants which handles db.put() to store the restaurants in the idb
+        dbPromise.updateRestaurants(restaurants);
         // const restaurants = json.restaurants;
         callback(null, restaurants);
       } else { // Oops!. Got an error from server.
-        const error = (`Request failed. Returned status of ${xhr.status}`);
-        callback(error, null);
+        alert(`Request failed. Returned status of ${xhr.status}. Pulling from indexedDB instead.`);
+          // if xhr request isn't code 200, try idb
+          dbPromise.getRestaurants().then(idbRestaurants => {
+              // if we get back more than 1 restaurant from idb, return idbRestaurants
+              if (idbRestaurants.length > 0) {
+                  callback(null, idbRestaurants)
+              } else { // if we got back 0 restaurants return an error
+                  callback('No restaurants found in idb', null);
+              }
+          });
       }
     };
     xhr.send();
