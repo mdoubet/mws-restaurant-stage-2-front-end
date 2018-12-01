@@ -42,6 +42,18 @@ export default class DBHelper {
           });
       }
     };
+      // XHR needs error handling for when server is down (doesn't respond or sends back codes)
+      xhr.onerror = () => {
+          console.log('Error while trying XHR, trying idb...');
+          // try idb, and if we get restaurants back, return them, otherwise return an error
+          dbPromise.getRestaurants().then(idbRestaurants => {
+              if (idbRestaurants.length > 0) {
+                  callback(null, idbRestaurants)
+              } else {
+                  callback('No restaurants found in idb', null);
+              }
+          });
+      }
     xhr.send();
   }
 

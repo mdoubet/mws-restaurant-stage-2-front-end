@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3f68ed-2bda-476f-b020-800089b1a573" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/gulpfile.babel.js" afterPath="$PROJECT_DIR$/gulpfile.babel.js" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
       <change beforePath="$PROJECT_DIR$/src/js/dbhelper.js" afterPath="$PROJECT_DIR$/src/js/dbhelper.js" />
-      <change beforePath="$PROJECT_DIR$/src/js/indexController.js" afterPath="$PROJECT_DIR$/src/js/indexController.js" />
-      <change beforePath="$PROJECT_DIR$/src/js/main.js" afterPath="$PROJECT_DIR$/src/js/main.js" />
-      <change beforePath="$PROJECT_DIR$/src/js/restaurant_info.js" afterPath="$PROJECT_DIR$/src/js/restaurant_info.js" />
-      <change beforePath="$PROJECT_DIR$/src/restaurant.html" afterPath="$PROJECT_DIR$/src/restaurant.html" />
-      <change beforePath="$PROJECT_DIR$/src/sw.js" afterPath="$PROJECT_DIR$/src/sw.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -77,8 +69,8 @@
       <file leaf-file-name="dbhelper.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/dbhelper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="42" column="7" lean-forward="false" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+            <state relative-caret-position="604">
+              <caret line="55" column="7" lean-forward="false" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -333,12 +325,12 @@
       <workItem from="1542992409310" duration="13972000" />
       <workItem from="1543339563074" duration="6955000" />
       <workItem from="1543432747451" duration="1157000" />
-      <workItem from="1543538526348" duration="19571000" />
+      <workItem from="1543538526348" duration="19676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91016000" />
+    <option name="totallyTimeSpent" value="91121000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -351,7 +343,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1182" y="-1080" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14955239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -362,7 +353,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Quokka" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21594349" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21594349" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -765,8 +756,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/dbhelper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="42" column="7" lean-forward="false" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+        <state relative-caret-position="604">
+          <caret line="55" column="7" lean-forward="false" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
           <folding />
         </state>
       </provider>
