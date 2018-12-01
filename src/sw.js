@@ -1,4 +1,4 @@
-const staticCacheName = 'mws-restaurant-pt2-v2';
+const staticCacheName = 'mws-restaurant-pt2-v3';
 const mapCacheName = 'mws-restaurant-map';
 const imageCacheName = 'mws-restaurant-images';
 
@@ -12,7 +12,8 @@ self.addEventListener('install', function(event) {
                 'js/restaurant_info.js',
                 'css/styles.css',
                 'restaurant.html',
-                'img/restaurant-default.svg'
+                'img/restaurant-default.svg',
+                'manifest.json'
 
             ]);
         })

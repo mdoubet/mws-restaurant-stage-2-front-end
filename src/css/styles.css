@@ -20,13 +20,16 @@ ul, li {
 	color: #333;
 }
 a {
-	color: orange;
+	color: navy;
 	text-decoration: none;
     padding: 20px;
 }
 a:hover, a:focus {
 	color: #3397db;
 	text-decoration: none;
+}
+a strong {
+  color: #e52800;
 }
 a img{
 	border: none 0px #fff;
@@ -47,7 +50,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #footer {
   background-color: #444;
-  color: #aaa;
+  color: #b1b1b1;
   font-size: 8pt;
   letter-spacing: 1px;
   padding: 25px;
@@ -57,7 +60,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 /* ====================== Navigation ====================== */
 nav {
   width: 100%;
-  background-color: #252831;
+  background-color: #4600ff;
   text-align:center;
   max-height: 80px;
   padding: 10px 0px;
@@ -94,7 +97,7 @@ nav h1 a {
 /* Add a slash symbol (/) before/behind each list item */
 #breadcrumb li+li:before {
     padding: 8px;
-    color: black;
+    color: #103dff;
     content: "/\00a0";
 }
 
@@ -122,7 +125,7 @@ nav h1 a {
 .filter-options {
 
   min-height: 50px;
-  background-color: #3397DB;
+  background-color: #e52800;
   align-items: center;
   padding: 4px 4px 4px;
 }
@@ -174,7 +177,7 @@ nav h1 a {
   max-height: 248px;
 }
 #restaurants-list li h1 {
-  color: #f18200;
+  color: #103dff;
   font-family: Arial,sans-serif;
   font-size: 14pt;
   font-weight: 200;
@@ -188,7 +191,7 @@ nav h1 a {
   font-size: 11pt;
 }
 #restaurants-list li a {
-  background-color: orange;
+  background-color: #1800ff;
   border-bottom: 3px solid #eee;
   color: #fff;
   display: inline-block;
@@ -251,7 +254,7 @@ nav h1 a {
   width: 100%;
 }
 #restaurant-name {
-  color: #f18200;
+  color: #4600ff;
   font-family: Arial,sans-serif;
   font-size: 20pt;
   font-weight: 200;
